@@ -21,4 +21,12 @@ io.on('connection', (socket)=>{
     socket.on('disconnect', ()=>{
         console.log('Client hangedup');
     });
+
+    socket.on('createNewMessage', (msg)=>{
+        console.log("A new message arrived");
+        io.emit('newMessage', {
+            name: msg.name,
+            text: msg.text
+        })
+    })
 })
